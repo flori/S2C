@@ -3,10 +3,11 @@ using Toybox.Graphics;
 
 class S2CView extends WatchUi.DataField {
   hidden var cadence;
+  hidden var cadenceValue;
 
   function initialize() {
     DataField.initialize();
-    cadence = 0.0f;
+    cadence = new Cadence();
   }
 
   function onLayout(dc) {
@@ -32,9 +33,9 @@ class S2CView extends WatchUi.DataField {
     // See Activity.Info in the documentation for available information.
     if(info has :currentSpeed){
       if(info.currentSpeed != null){
-        cadence = new Cadence().add(info.currentSpeed).compute();
+        cadenceValue = cadence.add(info.currentSpeed).compute();
       } else {
-        cadence = 0.0f;
+        cadenceValue = 0.0f;
       }
     }
   }
@@ -50,13 +51,17 @@ class S2CView extends WatchUi.DataField {
     } else {
       value.setColor(Graphics.COLOR_BLACK);
     }
-    if (cadence == 0) {
+    if (cadenceValue == 0) {
       value.setText("___");
     } else {
-      value.setText(cadence.format("%u"));
+      value.setText(cadenceValue.format("%u"));
     }
 
     // Call parent's onUpdate(dc) to redraw the layout
     View.onUpdate(dc);
+  }
+
+  function reconfigure() {
+    cadence = new Cadence();
   }
 }

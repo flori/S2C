@@ -1,11 +1,15 @@
 class Cadence {
   var speed; // m/s
-  const wheelCircumference = 2105; // mm
-  const chainringSize = 48.0d; // teeth
-  const cogSize = 16.0d; // teeth
+  var wheelCircumference; // mm
+  var chainringSize; // teeth
+  var cogSize; // teeth
 
   function initialize() {
     speed = 0.0d;
+    chainringSize = Application.Properties.getValue("chainringSize").toDouble();
+    cogSize = Application.Properties.getValue("cogSize").toDouble();
+    wheelCircumference = Application.Properties.getValue("wheelCircumference").toDouble();
+    System.println("Configured cadence with chainring = " + chainringSize + ", cog = " + cogSize + ", wheel = " + wheelCircumference);
   }
 
   function add(currentSpeed) {

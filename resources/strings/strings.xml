@@ -1,4 +1,16 @@
 <strings>
-    <string id="AppName">S2C</string>
-    <string id="label">Cadence</string>
+  <string id="AppName">S2C</string>
+  <string id="label">Cadence</string>
+
+  <string id="chainringSizeTitle">Chainring Size (teeth)</string>
+  <string id="chainringSizePrompt">Enter your Chainring Size</string>
+  <string id="chainringSizeError">Legal values are between 20-64 teeth</string>
+
+  <string id="cogSizeTitle">Cog Size (teeth)</string>
+  <string id="cogSizePrompt">Enter your Cog Size</string>
+  <string id="cogSizeError">Legal values are between 9-52 teeth</string>
+
+  <string id="wheelCircumferenceTitle">Wheel Circumference (mm)</string>
+  <string id="wheelCircumferencePrompt">Enter your Wheel Circumference</string>
+  <string id="wheelCircumferenceError">Legal values are between 1200-2400mm</string>
 </strings>

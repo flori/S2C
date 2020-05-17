@@ -1,8 +1,11 @@
 using Toybox.Application;
 
 class S2CApp extends Application.AppBase {
+  hidden var view;
+
   function initialize() {
     AppBase.initialize();
+    view = new S2CView();
   }
 
   function onStart(state) {
@@ -12,6 +15,10 @@ class S2CApp extends Application.AppBase {
   }
 
   function getInitialView() {
-    return [ new S2CView() ];
+    return [ view ];
+  }
+
+  function onSettingsChanged() {
+    view.reconfigure();
   }
 }
