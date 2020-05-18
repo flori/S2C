@@ -8,12 +8,6 @@ class S2CApp extends Application.AppBase {
     view = new S2CView();
   }
 
-  function onStart(state) {
-  }
-
-  function onStop(state) {
-  }
-
   function getInitialView() {
     return [ view ];
   }

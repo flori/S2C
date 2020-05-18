@@ -3,10 +3,10 @@
         <iq:products>
             <iq:product id="edge1030"/>
             <iq:product id="edge1030bontrager"/>
-            <iq:product id="edge530"/>
-            <iq:product id="edge830"/>
         </iq:products>
-        <iq:permissions/>
+        <iq:permissions>
+            <iq:uses-permission id="FitContributor"/>
+        </iq:permissions>
         <iq:languages>
             <iq:language>eng</iq:language>
         </iq:languages>

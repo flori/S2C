@@ -4,10 +4,12 @@ using Toybox.Graphics;
 class S2CView extends WatchUi.DataField {
   hidden var cadence;
   hidden var cadenceValue;
+  hidden var fitContributor;
 
   function initialize() {
     DataField.initialize();
     cadence = new Cadence();
+    fitContributor = new CadenceFitContributor(self);
   }
 
   function onLayout(dc) {
@@ -33,6 +35,7 @@ class S2CView extends WatchUi.DataField {
     if(info has :currentSpeed){
       if(info.currentSpeed != null){
         cadenceValue = cadence.add(info.currentSpeed).compute();
+        fitContributor.compute(cadenceValue);
       } else {
         cadenceValue = 0.0f;
       }
@@ -62,5 +65,29 @@ class S2CView extends WatchUi.DataField {
 
   function reconfigure() {
     cadence = new Cadence();
+  }
+
+  function onTimerStart() {
+    fitContributor.setTimerRunning( true );
+  }
+
+  function onTimerStop() {
+    fitContributor.setTimerRunning( false );
+  }
+
+  function onTimerPause() {
+    fitContributor.setTimerRunning( false );
+  }
+
+  function onTimerResume() {
+    fitContributor.setTimerRunning( true );
+  }
+
+  function onTimerLap() {
+    fitContributor.onTimerLap();
+  }
+
+  function onTimerReset() {
+    fitContributor.onTimerReset();
   }
 }

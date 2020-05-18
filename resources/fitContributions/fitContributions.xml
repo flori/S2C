@@ -1,0 +1,43 @@
+<fitContributions>
+  <fitField id="0"
+    displayInChart="true"
+    sortOrder="0"
+    precision="0"
+    chartTitle="@Strings.cadence_label"
+    dataLabel="@Strings.cadence_label"
+    unitLabel="@Strings.cadence_units"
+    fillColor="#0000FF"
+  />
+
+  <fitField id="1"
+    displayInActivityLaps="true"
+    sortOrder="1"
+    precision="0"
+    dataLabel="@Strings.avg_cadence_label"
+    unitLabel="@Strings.cadence_units"
+  />
+
+  <fitField id="2"
+    displayInActivityLaps="true"
+    sortOrder="2"
+    precision="0"
+    dataLabel="@Strings.max_cadence_label"
+    unitLabel="@Strings.cadence_units"
+  />
+
+  <fitField id="3"
+    displayInActivitySummary="true"
+    sortOrder="3"
+    precision="0"
+    dataLabel="@Strings.avg_cadence_label"
+    unitLabel="@Strings.cadence_units"
+    />
+
+  <fitField id="4"
+    displayInActivitySummary="true"
+    sortOrder="4"
+    precision="0"
+    dataLabel="@Strings.max_cadence_label"
+    unitLabel="@Strings.cadence_units"
+  />
+</fitContributions>
