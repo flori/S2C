@@ -30,7 +30,6 @@ class S2CView extends WatchUi.DataField {
   }
 
   function compute(info) {
-    // See Activity.Info in the documentation for available information.
     if(info has :currentSpeed){
       if(info.currentSpeed != null){
         cadenceValue = cadence.add(info.currentSpeed).compute();
