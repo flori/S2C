@@ -3,7 +3,7 @@ using Toybox.Graphics;
 
 class S2CView extends WatchUi.DataField {
   hidden var cadence;
-  hidden var cadenceValue;
+  hidden var cadenceValue = 0;
   hidden var fitContributor;
 
   function initialize() {
