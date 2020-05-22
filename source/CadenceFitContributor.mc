@@ -24,7 +24,7 @@ class CadenceFitContributor {
     );
 
     lapAvgCadenceField = dataField.createField(
-      "lap_avg_cadence", 1, FitContributor.DATA_TYPE_UINT8,
+      "avg_cadence", 1, FitContributor.DATA_TYPE_UINT8,
       {
       :nativeNum => 17,
       :mesgType  => FitContributor.MESG_TYPE_LAP,
@@ -33,7 +33,7 @@ class CadenceFitContributor {
     );
 
     lapMaxCadenceField = dataField.createField(
-      "lap_max_cadence", 2, FitContributor.DATA_TYPE_UINT8,
+      "max_cadence", 2, FitContributor.DATA_TYPE_UINT8,
       {
       :nativeNum => 18,
       :mesgType  => FitContributor.MESG_TYPE_LAP,
@@ -42,7 +42,7 @@ class CadenceFitContributor {
     );
 
     sessionAvgCadenceField = dataField.createField(
-      "session_avg_cadence", 3, FitContributor.DATA_TYPE_UINT8,
+      "avg_cadence", 3, FitContributor.DATA_TYPE_UINT8,
       {
       :nativeNum => 18,
       :mesgType  => FitContributor.MESG_TYPE_SESSION,
@@ -51,7 +51,7 @@ class CadenceFitContributor {
     );
 
     sessionMaxCadenceField = dataField.createField(
-      "session_max_cadence", 4, FitContributor.DATA_TYPE_UINT8,
+      "max_cadence", 4, FitContributor.DATA_TYPE_UINT8,
       {
       :nativeNum => 19,
       :mesgType  => FitContributor.MESG_TYPE_SESSION,
