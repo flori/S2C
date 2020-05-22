@@ -14,6 +14,8 @@
   <string id="wheelCircumferencePrompt">Enter your Wheel Circumference</string>
   <string id="wheelCircumferenceError">Legal values are between 1200-2400mm</string>
 
+  <string id="versionTitle">Version</string>
+
   <string id="cadence_label">Cadence</string>
   <string id="cadence_units">rpm</string>
   <string id="avg_cadence_label">Avg Cadence</string>  

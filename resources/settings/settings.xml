@@ -8,4 +8,7 @@
   <setting propertyKey="@Properties.wheelCircumference" title="@Strings.wheelCircumferenceTitle" prompt="@Strings.wheelCircumferencePrompt">
     <settingConfig type="numeric" errorMessage="@Strings.wheelCircumferenceError" required="true" min="1200" max="2400"/>
   </setting>
+  <setting propertyKey="@Properties.version" title="@Strings.versionTitle">
+    <settingConfig type="alphanumeric" required="true" readonly="true"/>
+  </setting>
 </settings>
