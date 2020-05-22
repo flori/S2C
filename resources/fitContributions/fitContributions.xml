@@ -6,7 +6,7 @@
     chartTitle="@Strings.cadence_label"
     dataLabel="@Strings.cadence_label"
     unitLabel="@Strings.cadence_units"
-    fillColor="#FF7900"
+    fillColor="#ED7E00"
   />
 
   <fitField id="1"
