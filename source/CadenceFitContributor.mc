@@ -72,10 +72,10 @@ class CadenceFitContributor {
       return;
     }
 
-    currentCadenceField.setData(cadenceValue);
+    currentCadenceField.setData(Math.round(cadenceValue));
 
     lapStats.add(cadenceValue);
-    sessionStats.add(Math.round(cadenceValue));
+    sessionStats.add(cadenceValue);
 
     lapAvgCadenceField.setData(Math.round(lapStats.average()));
     lapMaxCadenceField.setData(Math.round(lapStats.maximum()));
