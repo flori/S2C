@@ -13,21 +13,33 @@ class S2CView extends WatchUi.DataField {
   }
 
   function onLayout(dc) {
-    View.setLayout(Rez.Layouts.MainLayout(dc));
-    var labelView = View.findDrawableById("label");
-    labelView.locY = labelView.locY - 32;
+    var height = dc.getHeight();
+    if (height < 87) {
+      View.setLayout(Rez.Layouts.SmallLayout(dc));
+      var labelView = View.findDrawableById("label");
+      labelView.locY = labelView.locY - 26;
 
-    var valueView = View.findDrawableById("value");
-    valueView.locX = valueView.locX + 37;
-    valueView.locY = valueView.locY + 16;
+      var valueView = View.findDrawableById("value");
+      valueView.locX = valueView.locX + 37;
+      valueView.locY = valueView.locY + 4;
 
-    var unitView = View.findDrawableById("unit");
-    unitView.locX = unitView.locX + 54;
-    unitView.locY = unitView.locY - 10;
+      View.findDrawableById("label").setText(Rez.Strings.label);
+    } else {
+      View.setLayout(Rez.Layouts.MainLayout(dc));
+      var labelView = View.findDrawableById("label");
+      labelView.locY = labelView.locY - 32;
 
-    View.findDrawableById("label").setText(Rez.Strings.label);
-    View.findDrawableById("unit").setText("r\np\nm");
+      var valueView = View.findDrawableById("value");
+      valueView.locX = valueView.locX + 37;
+      valueView.locY = valueView.locY + 16;
 
+      var unitView = View.findDrawableById("unit");
+      unitView.locX = unitView.locX + 54;
+      unitView.locY = unitView.locY - 10;
+
+      View.findDrawableById("label").setText(Rez.Strings.label);
+      View.findDrawableById("unit").setText("r\np\nm");
+    }
     return true;
   }
 
