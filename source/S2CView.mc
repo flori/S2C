@@ -5,6 +5,9 @@ class S2CView extends WatchUi.DataField {
   hidden var cadence;
   hidden var cadenceValue = 0;
   hidden var fitContributor;
+  hidden var labelView = null;
+  hidden var valueView = null;
+  hidden var unitView = null;
 
   function initialize() {
     DataField.initialize();
@@ -16,24 +19,24 @@ class S2CView extends WatchUi.DataField {
     var height = dc.getHeight();
     if (height < 87) {
       View.setLayout(Rez.Layouts.SmallLayout(dc));
-      var labelView = View.findDrawableById("label");
+      labelView = View.findDrawableById("label");
       labelView.locY = labelView.locY - 26;
 
-      var valueView = View.findDrawableById("value");
+      valueView = View.findDrawableById("value");
       valueView.locX = valueView.locX + 37;
       valueView.locY = valueView.locY + 4;
 
       View.findDrawableById("label").setText(Rez.Strings.label);
     } else {
       View.setLayout(Rez.Layouts.MainLayout(dc));
-      var labelView = View.findDrawableById("label");
+      labelView = View.findDrawableById("label");
       labelView.locY = labelView.locY - 32;
 
-      var valueView = View.findDrawableById("value");
+      valueView = View.findDrawableById("value");
       valueView.locX = valueView.locX + 37;
       valueView.locY = valueView.locY + 16;
 
-      var unitView = View.findDrawableById("unit");
+      unitView = View.findDrawableById("unit");
       unitView.locX = unitView.locX + 54;
       unitView.locY = unitView.locY - 10;
 
@@ -54,21 +57,30 @@ class S2CView extends WatchUi.DataField {
     }
   }
 
+  private function setColorOnDrawable(drawable) {
+    if (drawable == null) {
+      return;
+    }
+    if (getBackgroundColor() == Graphics.COLOR_BLACK) {
+      drawable.setColor(Graphics.COLOR_WHITE);
+    } else {
+      drawable.setColor(Graphics.COLOR_BLACK);
+    }
+  }
+
   function onUpdate(dc) {
     // Set the background color
     View.findDrawableById("Background").setColor(getBackgroundColor());
 
-    // Set the foreground color and value
-    var value = View.findDrawableById("value");
-    if (getBackgroundColor() == Graphics.COLOR_BLACK) {
-      value.setColor(Graphics.COLOR_WHITE);
-    } else {
-      value.setColor(Graphics.COLOR_BLACK);
-    }
+    // Set the foreground color on views
+    setColorOnDrawable(labelView);
+    setColorOnDrawable(valueView);
+    setColorOnDrawable(unitView);
+
     if (cadenceValue == 0) {
-      value.setText("___");
+      valueView.setText("___");
     } else {
-      value.setText(cadenceValue.format("%u"));
+      valueView.setText(cadenceValue.format("%u"));
     }
 
     // Call parent's onUpdate(dc) to redraw the layout

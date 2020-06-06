@@ -2,5 +2,5 @@
   <property id="chainringSize" type="number">48</property>
   <property id="cogSize" type="number">17</property>
   <property id="wheelCircumference" type="number">2105</property>
-  <property id="version" type="string">0.1.0</property>
+  <property id="version" type="string">0.1.1</property>
 </properties>
