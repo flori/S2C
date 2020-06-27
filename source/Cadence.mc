@@ -1,6 +1,6 @@
 class Cadence {
-  var speed; // m/s
-  var wheelCircumference; // mm
+  hidden var speed; // m/s
+  hidden var wheelCircumference; // mm
   var chainringSize; // teeth
   var cogSize; // teeth
 
