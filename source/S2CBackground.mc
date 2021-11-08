@@ -3,7 +3,6 @@ using Toybox.Application;
 using Toybox.Graphics;
 
 class Background extends WatchUi.Drawable {
-
   hidden var mColor;
 
   function initialize() {
@@ -22,5 +21,4 @@ class Background extends WatchUi.Drawable {
     dc.setColor(Graphics.COLOR_TRANSPARENT, mColor);
     dc.clear();
   }
-
 }

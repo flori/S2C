@@ -4,6 +4,8 @@ using Toybox.Graphics;
 class S2CView extends WatchUi.DataField {
   hidden var cadence;
   hidden var cadenceValue = 0;
+  hidden var showConfigurePage = false;
+  hidden var configureCountDown = 0;
   hidden var fitContributor;
   hidden var labelView = null;
   hidden var valueView = null;
@@ -16,6 +18,36 @@ class S2CView extends WatchUi.DataField {
   }
 
   function onLayout(dc) {
+    if (showConfigurePage) {
+      drawConfigurePage(dc);
+    } else {
+      drawCadencePage(dc);
+    }
+    return true;
+  }
+
+  private function drawConfigurePage(dc) {
+    var height = dc.getHeight();
+
+    View.setLayout(Rez.Layouts.ConfigureLayout(dc));
+    labelView = View.findDrawableById("label");
+    if (height < 87) {
+      labelView.locY = labelView.locY - 26;
+    } else {
+      labelView.locY = labelView.locY - 32;
+    }
+
+    valueView = View.findDrawableById("value");
+    if (height < 87) {
+      valueView.locY = valueView.locY + 4;
+    } else {
+      valueView.locY = valueView.locY + 16;
+    }
+
+    View.findDrawableById("label").setText(Rez.Strings.label);
+  }
+
+  private function drawCadencePage(dc) {
     var height = dc.getHeight();
     if (height < 87) {
       View.setLayout(Rez.Layouts.SmallLayout(dc));
@@ -43,7 +75,6 @@ class S2CView extends WatchUi.DataField {
       View.findDrawableById("label").setText(Rez.Strings.label);
       View.findDrawableById("unit").setText("r\np\nm");
     }
-    return true;
   }
 
   function compute(info) {
@@ -68,7 +99,7 @@ class S2CView extends WatchUi.DataField {
     }
   }
 
-  function onUpdate(dc) {
+  private function configureDrawables() {
     // Set the background color
     View.findDrawableById("Background").setColor(getBackgroundColor());
 
@@ -76,11 +107,38 @@ class S2CView extends WatchUi.DataField {
     setColorOnDrawable(labelView);
     setColorOnDrawable(valueView);
     setColorOnDrawable(unitView);
+  }
 
-    if (cadenceValue == 0) {
-      valueView.setText("___");
+  function onUpdate(dc) {
+    if (configureCountDown > 0 && !showConfigurePage) {
+      System.println("Switching to configure page");
+      showConfigurePage = true;
+      drawConfigurePage(dc);
     } else {
-      valueView.setText(cadenceValue.format("%u"));
+      if (configureCountDown <= 0 && showConfigurePage) {
+        System.println("Switching to cadence page");
+        showConfigurePage = false;
+        onLayout(dc);
+      }
+    }
+
+    if (configureCountDown > 0) {
+      configureCountDown--;
+    }
+
+    configureDrawables();
+
+    if (showConfigurePage) {
+      valueView.setText(
+        cadence.chainringSize.format("%u") + ":" +
+        cadence.cogSize.format("%u")
+      );
+    } else {
+      if (cadenceValue == 0) {
+        valueView.setText("___");
+      } else {
+        valueView.setText(cadenceValue.format("%u"));
+      }
     }
 
     // Call parent's onUpdate(dc) to redraw the layout
@@ -89,6 +147,7 @@ class S2CView extends WatchUi.DataField {
 
   function reconfigure() {
     cadence = new Cadence();
+    configureCountDown = 10;
   }
 
   function onTimerStart() {
