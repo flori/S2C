@@ -8,4 +8,10 @@
   <setting propertyKey="@Properties.wheelCircumference" title="@Strings.wheelCircumferenceTitle" prompt="@Strings.wheelCircumferencePrompt" helpUrl="https://www.sheldonbrown.com/cyclecomp_f.html">
     <settingConfig type="numeric" errorMessage="@Strings.wheelCircumferenceError" required="true" min="1200" max="2400"/>
   </setting>
+  <setting propertyKey="@Properties.switch" title="@Strings.switchTitle" prompt="@Strings.switchPrompt">
+    <settingConfig type="boolean" errorMessage="@Strings.switchError" required="true"/>
+  </setting>
+  <setting propertyKey="@Properties.switchDuration" title="@Strings.switchDurationTitle" prompt="@Strings.switchDurationPrompt">
+    <settingConfig type="numeric" errorMessage="@Strings.switchDurationError" required="true" min="1" max="60"/>
+  </setting>
 </settings>

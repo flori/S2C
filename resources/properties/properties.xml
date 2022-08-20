@@ -2,4 +2,6 @@
   <property id="chainringSize" type="number">48</property>
   <property id="cogSize" type="number">17</property>
   <property id="wheelCircumference" type="number">2105</property>
+  <property id="switch" type="boolean">false</property>
+  <property id="switchDuration" type="number">10</property>
 </properties>

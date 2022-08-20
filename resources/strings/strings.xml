@@ -14,8 +14,15 @@
   <string id="wheelCircumferencePrompt">Enter your Wheel Circumference</string>
   <string id="wheelCircumferenceError">Legal values are between 1200-2400mm</string>
 
-  <string id="versionTitle">Version</string>
+  <string id="switchTitle">Switch between speed and cadency display</string>
+  <string id="switchPrompt">Enable or disable</string>
+  <string id="switchError">Legal values are false or true</string>
 
+  <string id="switchDurationTitle">Duration to display speed or cadency in seconds</string>
+  <string id="switchDurationPrompt">Choose between 1 or 60 seconds</string>
+  <string id="switchDurationError">Legal values are between 1 or 60 seconds</string>
+
+  <!-- FIT Contributions -->
   <string id="cadence_label">Cadence</string>
   <string id="cadence_units">rpm</string>
   <string id="avg_cadence_label">Avg Cadence</string>  

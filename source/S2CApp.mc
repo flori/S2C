@@ -8,11 +8,7 @@ class S2CApp extends Application.AppBase {
     view = new S2CView();
   }
 
-  function getInitialView() {
-    return [ view ];
-  }
+  function getInitialView() { return [view]; }
 
-  function onSettingsChanged() {
-    view.reconfigure();
-  }
+  function onSettingsChanged() { view.reconfigure(); }
 }

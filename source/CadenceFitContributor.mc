@@ -15,7 +15,7 @@ class CadenceFitContributor {
 
   function initialize(dataField) {
     currentCadenceField = dataField.createField(
-        "cadence", 0, FitContributor.DATA_TYPE_UINT8,
+      "cadence", 0, FitContributor.DATA_TYPE_UINT8,
       {
       :nativeNum => 4,
       :mesgType  => FitContributor.MESG_TYPE_RECORD,
@@ -63,7 +63,7 @@ class CadenceFitContributor {
     sessionStats = new Stats();
 
     timerRunning = true;
-    compute(0); // initialize with zero
+    compute(0);  // initialize with zero
     timerRunning = false;
   }
 
@@ -83,17 +83,15 @@ class CadenceFitContributor {
     sessionAvgCadenceField.setData(Math.round(sessionStats.average()));
     sessionMaxCadenceField.setData(Math.round(sessionStats.maximum()));
 
-    System.println("Fit: cadence = " + Math.round(cadenceValue) +
+    System.println(
+      "Fit: cadence = " + Math.round(cadenceValue) +
         ", lapAvg = " + Math.round(lapStats.average()) +
         ", lapMax = " + Math.round(lapStats.maximum()) +
         ", sessionAvg = " + Math.round(sessionStats.average()) +
-        ", sessionMax = " + Math.round(sessionStats.maximum())
-        );
+        ", sessionMax = " + Math.round(sessionStats.maximum()));
   }
 
-  function setTimerRunning(enabled) {
-    timerRunning = enabled;
-  }
+  function setTimerRunning(enabled) { timerRunning = enabled; }
 
   function onTimerReset() {
     System.println("timer reset");

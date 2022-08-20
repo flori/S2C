@@ -3,9 +3,7 @@ class Stats {
   hidden var max;
   hidden var count;
 
-  function initialize() {
-    reset();
-  }
+  function initialize() { reset(); }
 
   function add(value) {
     count++;
@@ -25,13 +23,11 @@ class Stats {
     }
   }
 
-  function maximum() {
-    return max;
-  }
+  function maximum() { return max; }
 
   function reset() {
     total = 0.0d;
-    max   = 0.0d;
+    max = 0.0d;
     count = 0;
   }
 }
