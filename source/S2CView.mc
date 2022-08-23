@@ -18,6 +18,7 @@ class S2CView extends WatchUi.DataField {
   hidden var labelView = null;
   hidden var valueView = null;
   hidden var unitView = null;
+  hidden var timerState = null;
 
   function initialize() {
     DataField.initialize();
@@ -124,7 +125,7 @@ class S2CView extends WatchUi.DataField {
   }
 
   function compute(info) {
-    if (info has : currentSpeed) {
+    if (info has :currentSpeed) {
       if (info.currentSpeed != null) {
         cadenceSpeed.add(info.currentSpeed);
         cadenceValue = cadenceSpeed.cadenceRpm();
@@ -136,6 +137,9 @@ class S2CView extends WatchUi.DataField {
       }
       System.println("Compute: cadence = " + Math.round(cadenceValue) +
                      ", speed = " + Math.round(speedValue));
+    }
+    if (info has :timerState) {
+      timerState = info.timerState;
     }
   }
 
@@ -172,9 +176,15 @@ class S2CView extends WatchUi.DataField {
         countDown = 10;
         onLayout(dc);
       } else if (switchEnabled) {
-        displayState = nextDisplayState;
-        nextDisplayState = displayState == CADENCE ? SPEED : CADENCE;
-        countDown = switchDuration;
+        if (timerState != null && timerState == Activity.TIMER_STATE_ON) {
+          displayState = nextDisplayState;
+          nextDisplayState = displayState == CADENCE ? SPEED : CADENCE;
+          countDown = switchDuration;
+        } else {
+          displayState = CADENCE;
+          nextDisplayState = CADENCE;
+          countDown = switchDuration;
+        }
         onLayout(dc);
       } else {
         displayState = CADENCE;
