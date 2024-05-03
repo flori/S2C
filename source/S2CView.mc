@@ -44,7 +44,6 @@ class S2CView extends WatchUi.DataField {
         System.error(displayState.format("Invalid state %u encountered"));
     }
     configureDrawables();
-    return true;
   }
 
   private function drawConfigurePage(dc) {
@@ -65,7 +64,7 @@ class S2CView extends WatchUi.DataField {
       valueView.locY = valueView.locY + 16;
     }
 
-    View.findDrawableById("label").setText("Ratio");
+    (View.findDrawableById("label") as Toybox.WatchUi.Text).setText("Ratio");
   }
 
   private function drawCadencePage(dc) {
@@ -92,8 +91,8 @@ class S2CView extends WatchUi.DataField {
       unitView.locY = unitView.locY - 10;
     }
 
-    View.findDrawableById("label").setText("Cadence");
-    View.findDrawableById("unit").setText("r\np\nm");
+    (View.findDrawableById("label") as Toybox.WatchUi.Text).setText("Cadence");
+    (View.findDrawableById("unit") as Toybox.WatchUi.Text).setText("r\np\nm");
   }
 
   private function drawSpeedPage(dc) {
@@ -120,8 +119,8 @@ class S2CView extends WatchUi.DataField {
       unitView.locY = unitView.locY - 10;
     }
 
-    View.findDrawableById("label").setText("Speed");
-    View.findDrawableById("unit").setText("km\n–\nh");
+    (View.findDrawableById("label") as Toybox.WatchUi.Text).setText("Speed");
+    (View.findDrawableById("unit") as Toybox.WatchUi.Text).setText("km\n–\nh");
   }
 
   function compute(info) {
@@ -156,7 +155,7 @@ class S2CView extends WatchUi.DataField {
 
   private function configureDrawables() {
     // Set the background color
-    View.findDrawableById("Background").setColor(getBackgroundColor());
+    (View.findDrawableById("Background") as Toybox.WatchUi.Text).setColor(getBackgroundColor());
 
     // Set the foreground color on views
     setColorOnDrawable(labelView);
